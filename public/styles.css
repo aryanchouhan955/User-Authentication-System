@@ -1,0 +1,144 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b0f14;
+  --bg-soft: #0f1621;
+  --card: #131b28;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text: #e6edf5;
+  --muted: #9aa7b8;
+  --accent: #35d0ba;
+  --accent-2: #4aa3ff;
+  --glow: rgba(53, 208, 186, 0.2);
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 400px at 80% -10%, rgba(74, 163, 255, 0.16), transparent 60%),
+    radial-gradient(800px 500px at 10% -20%, rgba(53, 208, 186, 0.16), transparent 55%),
+    linear-gradient(160deg, var(--bg), #0b121b 40%, #0a0f15 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.container {
+  width: min(680px, 100%);
+  display: grid;
+  gap: 24px;
+}
+
+.topbar,
+.nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+h1 {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+p {
+  color: var(--muted);
+}
+
+.pill {
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+
+.pill:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.pill.ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+input {
+  background: var(--bg-soft);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
+.btn {
+  background: linear-gradient(130deg, var(--accent), var(--accent-2));
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #041011;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 30px rgba(53, 208, 186, 0.25);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 38px rgba(74, 163, 255, 0.25);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+a {
+  color: inherit;
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 22px;
+  }
+
+  .pill {
+    width: 100%;
+    text-align: center;
+  }
+}
