@@ -18,12 +18,28 @@ app.get('/home', (req, res) => {
     res.render('home');
 });
 
-// user want to get login page
+// create user 
+app.get('/create-user', (req, res) => {
+    res.render('createUser');
+});
+
+app.post('/create-user', async (req, res)=>{
+    const { name, email, id, password } = req.body;
+    const user = await userData.create({
+        userid: id,
+        name,
+        password,
+        email
+    });
+    res.redirect('/login');
+})
+
+// login 
 app.get('/login', (req, res) => {
     res.render('userLogin');
 });
 
-// user post login from
+// post login from
 app.post('/login', async (req, res)=>{
     const { userid, password } = req.body;
     const user = await userData.findOne({ userid, password });
@@ -53,10 +69,10 @@ app.get('/delete/:userid', async(req, res)=>{
     const userid = req.params.userid;
     const user = await userData.findOneAndDelete({userid});
     if(user){
-        res.render('userLogin', {msg: 'Profile Deleted Successfully'});
+        res.render('home', {msg: 'Profile Deleted Successfully'});
     }
     else{
-        res.render('userLogin', { msg: 'Please enter correct id and password' });
+        res.render('home', { msg: 'Please enter correct id and password' });
     }
 })
 
@@ -70,9 +86,9 @@ app.get('/edit/:userid', async (req, res)=>{
     else{
         res.render('userLogin', { msg: `Cannot Edit user: ${userid}` });
     }
-    
 })
 
+// edit profile post
 app.post('/edit/:userid', async (req, res)=>{
     const userID = req.params.userid;
     const {userid, name, email, password} = req.body;
@@ -80,21 +96,13 @@ app.post('/edit/:userid', async (req, res)=>{
     res.redirect(`/profile/${userid}`)
 })
 
-// create user 
-app.get('/create-user', (req, res) => {
-    res.render('createUser');
-});
+// List of all users
 
-app.post('/create-user', async (req, res)=>{
-    const { name, email, id, password } = req.body;
-    const user = await userData.create({
-        userid: id,
-        name,
-        password,
-        email
-    });
-    res.redirect('/login');
+app.get('/list-user', async(req, res)=>{
+    const user_list = await userData.find();
+    res.render('list-user', {user_list});
 })
+
 
 
 app.listen(3000);

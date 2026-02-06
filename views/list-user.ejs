@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <main class="container">
+        <header class="topbar">
+            <a href="/home" class="pill">Home</a>
+            <a href="/login" class="pill">Login</a>
+            <a href="/create-user" class="pill">Create User</a>
+        </header>
+
+        <section class="card">
+            <h1>List of all Users</h1>
+            <% if(user_list && user_list.length > 0){ %>
+                <div class="user-list">
+                    <% user_list.forEach(user => { %>
+                        <div class="user-item">
+                            <div class="user-info">
+                                <p><strong>Name:</strong> <%= user.name %></p>
+                                <p><strong>Email:</strong> <%= user.email %></p>
+                                <p><strong>User ID:</strong> <%= user.userid %></p>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn" href="/profile/<%= user.userid %>">View</a>
+                                <a class="btn" href="/edit/<%= user.userid %>">Edit</a>
+                                <a class="btn btn-danger" href="/delete/<%= user.userid %>">Delete</a>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <p class="empty-state">No users found</p>
+            <% } %>
+        </section>
+        
+    </main>
+</body>
+</html>

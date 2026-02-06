@@ -16,7 +16,15 @@
             <a href="/home" class="pill">Home</a>
             <a href="/login" class="pill">Login</a>
             <a href="/create-user" class="pill">Create User</a>
+            <a href="/list-user" class="pill">List User</a>
         </nav>
     </main>
+
+    <% if (typeof msg !== 'undefined' && msg) { %>
+            <script>
+                alert('<%= msg %>');
+            </script>
+    <% } %>
+
 </body>
 </html>
