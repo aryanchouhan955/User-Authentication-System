@@ -1,0 +1,2 @@
+1. /profile/userid : one can open profile without password
+   /delete/userid: can delete any profile without pass

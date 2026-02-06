@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <main class="container">
+        <header class="topbar">
+            <a href="/home" class="pill">Home</a>
+        </header>
+        <section class="card">
+            <h1>Edit Profile</h1>
+
+            <form action="/edit/<%= userid %>" method="post" class="form">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<%= name %>" required>
+
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" value="<%= email %>" required>
+
+                <label for="userid">User ID</label>
+                <input type="text" id="userid" name="userid" value="<%= userid %>" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" value="<%= password %>" required>
+
+                <div class="btn-group">
+                    <button class="btn" type="submit">Submit</button>
+                    <a class="btn btn-danger" href="/profile/<%= userid %>">Cancel</a>
+                </div>
+            </form>
+
+        </section>
+    </main>
+</body>
+</html>

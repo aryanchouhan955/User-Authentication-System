@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <main class="container">
+        <header class="topbar">
+            <a href="/home" class="pill">Home</a>
+        </header>
+        <section class="card">
+            <h1>User Profile</h1>
+
+            <div class="form">
+
+                <label for="name">Name</label>
+                <span id="name"><%= name %></span>
+
+                <label for="email">Email</label>
+                <span id="email"><%= email %></span>
+
+                <label for="userid">User ID</label>
+                <span id="userid"><%= userid %></span>
+                
+                <div class="btn-group">
+                    <a class="btn" href="/edit/<%= userid %>">Edit</a>
+                    <a class="btn btn-danger" href="/delete/<%= userid %>">Delete</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

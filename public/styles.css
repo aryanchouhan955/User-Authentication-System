@@ -91,7 +91,8 @@ p {
   margin-top: 6px;
 }
 
-input {
+input,
+span {
   background: var(--bg-soft);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
@@ -99,6 +100,21 @@ input {
   color: var(--text);
   font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+span {
+  display: block;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted);
+  cursor: default;
+}
+
+label {
+  display: block;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
 }
 
 input:focus {
@@ -117,6 +133,8 @@ input:focus {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 12px 30px rgba(53, 208, 186, 0.25);
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn:hover {
@@ -126,6 +144,22 @@ input:focus {
 
 .btn:active {
   transform: translateY(0);
+}
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-danger {
+  background: linear-gradient(130deg, #ff6b6b, #ee5a52);
+  box-shadow: 0 12px 30px rgba(255, 107, 107, 0.25);
+}
+
+.btn-danger:hover {
+  box-shadow: 0 16px 38px rgba(255, 107, 107, 0.35);
 }
 
 a {
