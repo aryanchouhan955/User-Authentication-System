@@ -31,12 +31,13 @@ app.post('/create-user', async (req, res)=>{
         password,
         email
     });
-    res.redirect('/login');
+    res.redirect('/login?msg=' + encodeURIComponent('User created successfully'));
 })
 
 // login 
 app.get('/login', (req, res) => {
-    res.render('userLogin');
+    const msg = req.query.msg || '';
+    res.render('userLogin', { msg });
 });
 
 // post login from
@@ -60,7 +61,7 @@ app.get('/profile/:userid', async (req, res)=>{
         res.render('userProfile', {userid: user.userid, name: user.name, email: user.email});
     }
     else{
-        res.redirect('userLogin', { msg: 'Please enter correct id and password' })
+        res.render('userLogin', { msg: 'Please enter correct id and password' })
     }
 })
 
